@@ -26,6 +26,11 @@ fn print_nums(nums: Nums) -> Nil {
   io.println("]")
 }
 
+/// Clears the terminal
+fn terminal_clear() {
+  io.print("\u{001b}[1J\u{001b}[H")
+}
+
 fn input_all(nums: Nums) -> Nums {
   let inp =
     input.input("Enter a number (nothing to finish): ") |> result.unwrap("")
@@ -54,6 +59,10 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
         "//" -> #(single_commands.do(nums, Div), True)
 
         "sort" -> #(single_commands.do(nums, Sort), True)
+        "clear" -> {
+          terminal_clear()
+          #(nums, True)
+        }
         "exit" -> #(single_commands.do(nums, Exit), False)
 
         "+++" -> #(single_commands.all_at_once(nums, Add), True)

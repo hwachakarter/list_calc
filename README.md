@@ -1,24 +1,19 @@
-# list_calc
+Action can be: `+` `-` `*` `/`
 
-[![Package Version](https://img.shields.io/hexpm/v/list_calc)](https://hex.pm/packages/list_calc)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/list_calc/)
+## no argument commands:
+- sort - sorts the list.
+- exit - exists from the program.
+- clear - clears the terminal.
 
-```sh
-gleam add list_calc@1
-```
-```gleam
-import list_calc
+## one argument commands:
+- <action> <value> - does this action with value to every number in list.
+- add <value> - appends a value to the end of the list.
+- del <pos> - deletes a number on that pos.
 
-pub fn main() -> Nil {
-  // TODO: An example of the project in use
-}
-```
+## two argument commands:
+- insert <pos> <value> - inserts a new value at pos, pushing all other to the right.
+- replace <pos> <value> - replaces the value at pos.
 
-Further documentation can be found at <https://hexdocs.pm/list_calc>.
-
-## Development
-
-```sh
-gleam run   # Run the project
-gleam test  # Run the tests
-```
+## three argument commands:
+- show <pos> <action> <value> - shows the result of applying action with value to the number at pos.
+- do <pos> <action> <value> - applies action with value to the number at pos.
