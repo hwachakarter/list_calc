@@ -4,6 +4,7 @@ import gleam/io
 import gleam/list
 import gleam/result
 import gleam/string
+import scripts/two_arguments
 
 import input
 import scripts/one_argument
@@ -70,6 +71,18 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
         "add" -> #(one_argument.add(nums, inp_to_float(second)), True)
         "del" -> #(one_argument.del(nums, int.parse(second)), True)
 
+        _ -> #(nums, True)
+      }
+    [first, second, third] ->
+      case first {
+        "insert" -> #(
+          two_arguments.insert(nums, int.parse(second), inp_to_float(third)),
+          True,
+        )
+        "replace" -> #(
+          two_arguments.replace(nums, int.parse(second), inp_to_float(third)),
+          True,
+        )
         _ -> #(nums, True)
       }
     _ -> #(nums, True)
