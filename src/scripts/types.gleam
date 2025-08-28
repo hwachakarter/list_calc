@@ -1,3 +1,4 @@
+/// general type
 pub type Nums =
   List(Float)
 
@@ -7,5 +8,6 @@ pub type Command {
   Mul
   Div
   Sort
+  Round
   Exit
 }

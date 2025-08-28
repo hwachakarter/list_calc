@@ -2,6 +2,7 @@ import gleam/list
 
 import scripts/types.{type Command, type Nums, Add, Div, Mul, Sub}
 
+/// does action to every number
 pub fn do(nums: Nums, value: Float, command: Command) -> Nums {
   case command {
     Add -> nums |> list.map(fn(num) { num +. value })
@@ -12,10 +13,12 @@ pub fn do(nums: Nums, value: Float, command: Command) -> Nums {
   }
 }
 
+/// adds new number to list
 pub fn add(nums: Nums, num: Float) -> Nums {
   list.append(nums, [num])
 }
 
+/// deletes number at pos
 pub fn del(nums: Nums, pos: Result(Int, Nil)) -> Nums {
   let pos = case pos {
     Ok(value) -> value

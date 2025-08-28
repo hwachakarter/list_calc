@@ -4,6 +4,9 @@ Action can be: `+` `-` `*` `/`
 - sort - sorts the list.
 - exit - exists from the program.
 - clear - clears the terminal.
+- round - rounds all numbers.
+- <double action> - grabs pairs in list and applies action to both of them.
+- <triple action> - applies action to all numbers in list at once and shows the result.
 
 ## one argument commands:
 - <action> <value> - does this action with value to every number in list.

@@ -1,8 +1,9 @@
 import gleam/float
+import gleam/int
 import gleam/io
 import gleam/list
 
-import scripts/types.{type Command, type Nums, Add, Div, Mul, Sort, Sub}
+import scripts/types.{type Command, type Nums, Add, Div, Mul, Round, Sort, Sub}
 
 fn solve_pairs(nums: Nums, new_nums: Nums, command: Command) -> Nums {
   case nums {
@@ -22,6 +23,7 @@ fn solve_pairs(nums: Nums, new_nums: Nums, command: Command) -> Nums {
 pub fn do(nums: Nums, command: Command) -> Nums {
   case command {
     Sort -> list.sort(nums, float.compare)
+    Round -> list.map(nums, fn(num) { float.round(num) |> int.to_float })
     _ -> solve_pairs(nums, [], command)
   }
 }
