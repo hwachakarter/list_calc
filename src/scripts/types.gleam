@@ -1,7 +1,7 @@
 pub type Nums =
   List(Float)
 
-pub type SingleCommand {
+pub type Command {
   Add
   Sub
   Mul

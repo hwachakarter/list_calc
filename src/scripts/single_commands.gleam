@@ -2,9 +2,9 @@ import gleam/float
 import gleam/io
 import gleam/list
 
-import scripts/types.{type Nums, type SingleCommand, Add, Div, Mul, Sort, Sub}
+import scripts/types.{type Command, type Nums, Add, Div, Mul, Sort, Sub}
 
-fn solve_pairs(nums: Nums, new_nums: Nums, command: SingleCommand) -> Nums {
+fn solve_pairs(nums: Nums, new_nums: Nums, command: Command) -> Nums {
   case nums {
     [first, second, ..rest] ->
       case command {
@@ -19,14 +19,14 @@ fn solve_pairs(nums: Nums, new_nums: Nums, command: SingleCommand) -> Nums {
   }
 }
 
-pub fn do_single(nums: Nums, command: SingleCommand) -> Nums {
+pub fn do(nums: Nums, command: Command) -> Nums {
   case command {
     Sort -> list.sort(nums, float.compare)
     _ -> solve_pairs(nums, [], command)
   }
 }
 
-pub fn all_at_once(nums: Nums, command: SingleCommand) -> Nums {
+pub fn all_at_once(nums: Nums, command: Command) -> Nums {
   let answer = case command {
     Add -> nums |> list.reduce(fn(acc, x) { acc +. x })
     Sub -> nums |> list.reduce(fn(acc, x) { acc -. x })

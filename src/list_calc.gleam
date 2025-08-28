@@ -6,6 +6,7 @@ import gleam/result
 import gleam/string
 
 import input
+import scripts/one_argument
 import scripts/single_commands
 
 import scripts/types.{type Nums, Add, Div, Exit, Mul, Sort, Sub}
@@ -45,18 +46,30 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
   case inp {
     [single] ->
       case single {
-        "++" -> #(single_commands.do_single(nums, Add), True)
-        "--" -> #(single_commands.do_single(nums, Sub), True)
-        "**" -> #(single_commands.do_single(nums, Mul), True)
-        "//" -> #(single_commands.do_single(nums, Div), True)
+        "++" -> #(single_commands.do(nums, Add), True)
+        "--" -> #(single_commands.do(nums, Sub), True)
+        "**" -> #(single_commands.do(nums, Mul), True)
+        "//" -> #(single_commands.do(nums, Div), True)
 
-        "sort" -> #(single_commands.do_single(nums, Sort), True)
-        "exit" -> #(single_commands.do_single(nums, Exit), False)
+        "sort" -> #(single_commands.do(nums, Sort), True)
+        "exit" -> #(single_commands.do(nums, Exit), False)
 
         "+++" -> #(single_commands.all_at_once(nums, Add), True)
         "---" -> #(single_commands.all_at_once(nums, Sub), True)
         "***" -> #(single_commands.all_at_once(nums, Mul), True)
         "///" -> #(single_commands.all_at_once(nums, Div), True)
+        _ -> #(nums, True)
+      }
+    [first, second] ->
+      case first {
+        "+" -> #(one_argument.do(nums, inp_to_float(second), Add), True)
+        "-" -> #(one_argument.do(nums, inp_to_float(second), Sub), True)
+        "*" -> #(one_argument.do(nums, inp_to_float(second), Mul), True)
+        "/" -> #(one_argument.do(nums, inp_to_float(second), Div), True)
+
+        "add" -> #(one_argument.add(nums, inp_to_float(second)), True)
+        "del" -> #(one_argument.del(nums, int.parse(second)), True)
+
         _ -> #(nums, True)
       }
     _ -> #(nums, True)
