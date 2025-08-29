@@ -119,6 +119,11 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
           two_arguments.replace(nums, int.parse(second), inp_to_float(third)),
           True,
         )
+        "do" ->
+          case third {
+            "round" -> #(two_arguments.do(nums, int.parse(second), Round), True)
+            _ -> #(nums, True)
+          }
         _ -> #(nums, True)
       }
     // four items

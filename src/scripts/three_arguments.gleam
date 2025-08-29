@@ -1,15 +1,9 @@
 import gleam/float
 import gleam/io
-import gleam/list
+
+import scripts/misc
 import scripts/two_arguments
 import scripts/types.{type Command, type Nums, Add, Div, Exit, Mul, Sub}
-
-fn get_by_pos(nums: Nums, pos: Int) -> Result(Float, Nil) {
-  case list.drop(nums, pos - 1) {
-    [first, ..] -> Ok(first)
-    [] -> Error(Nil)
-  }
-}
 
 fn to_command_type(command: String) -> Command {
   case command {
@@ -31,7 +25,7 @@ fn calc(
     Ok(value) -> value
     Error(_) -> 0
   }
-  let num = get_by_pos(nums, pos)
+  let num = misc.get_by_pos(nums, pos)
   case num {
     Ok(num) -> {
       case pos > 0 {

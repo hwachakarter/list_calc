@@ -1,7 +1,11 @@
+import gleam/float
+import gleam/int
 import gleam/list
+import gleam/result
 
+import scripts/misc
 import scripts/one_argument
-import scripts/types.{type Nums}
+import scripts/types.{type Command, type Nums, Round}
 
 pub fn insert(nums: Nums, pos: Result(Int, Nil), value: Float) -> Nums {
   let pos = case pos {
@@ -20,4 +24,16 @@ pub fn insert(nums: Nums, pos: Result(Int, Nil), value: Float) -> Nums {
 pub fn replace(nums: Nums, pos: Result(Int, Nil), value: Float) -> Nums {
   let nums = one_argument.del(nums, pos)
   insert(nums, pos, value)
+}
+
+pub fn do(nums: Nums, pos: Result(Int, Nil), command: Command) -> Nums {
+  let num = misc.get_by_pos(nums, pos |> result.unwrap(0))
+  let num = case num {
+    Ok(value) -> value
+    Error(_) -> 0.0
+  }
+  case command {
+    Round -> replace(nums, pos, num |> float.round |> int.to_float)
+    _ -> nums
+  }
 }
