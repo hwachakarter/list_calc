@@ -1,4 +1,5 @@
-Action can be: `+` `-` `*` `/`
+`Action` can be: `+` `-` `*` `/`
+`Command` can be: `round`
 
 ## no argument commands:
 - `sort` - sorts the list.
@@ -16,6 +17,7 @@ Action can be: `+` `-` `*` `/`
 ## two argument commands:
 - `insert` `<pos>` `<value>` - inserts a new value at pos, pushing all other to the right.
 - `replace` `<pos>` `<value>` - replaces the value at pos.
+- `do` `<pos>` `<command>` - does command at pos.
 
 ## three argument commands:
 - `show` `<pos>` `<action>` `<value>` - shows the result of applying action with value to the number at pos.
