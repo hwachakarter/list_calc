@@ -5,13 +5,14 @@ import gleam/io
 import gleam/list
 import gleam/result
 import gleam/string
-import scripts/three_arguments
-import scripts/two_arguments
 
 // other inputs
+import argv
 import input
 import scripts/one_argument
 import scripts/single_commands
+import scripts/three_arguments
+import scripts/two_arguments
 import scripts/types.{type Nums, Add, Div, Exit, Mul, Round, Sort, Sub}
 
 /// Accepts string and returns float
@@ -151,6 +152,10 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
 
 pub fn main() {
   io.println("Hello from list_calc!")
-  let nums = input_all([])
+  // check for arguments and make a list out of them if present
+  let nums = case argv.load().arguments {
+    [_, ..] -> list.map(argv.load().arguments, inp_to_float)
+    [] -> input_all([])
+  }
   parsing(nums)
 }
