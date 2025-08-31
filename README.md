@@ -4,6 +4,7 @@
 
 ## no argument commands:
 - `sort` - sorts the list.
+- `tors` - sorts the list reversed.
 - `exit` - exists from the program.
 - `clear` - clears the terminal.
 - `round` - rounds all numbers.
