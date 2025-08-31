@@ -8,6 +8,7 @@ pub type Command {
   Mul
   Div
   Sort
+  Tors
   Round
   Exit
 }

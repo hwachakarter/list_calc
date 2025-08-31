@@ -13,7 +13,7 @@ import scripts/one_argument
 import scripts/single_commands
 import scripts/three_arguments
 import scripts/two_arguments
-import scripts/types.{type Nums, Add, Div, Exit, Mul, Round, Sort, Sub}
+import scripts/types.{type Nums, Add, Div, Exit, Mul, Round, Sort, Sub, Tors}
 
 /// Accepts string and returns float
 fn inp_to_float(inp: String) -> Float {
@@ -76,6 +76,7 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
 
         // word commands
         "sort" -> #(single_commands.do(nums, Sort), True)
+        "tors" -> #(single_commands.do(nums, Tors), True)
         "round" -> #(single_commands.do(nums, Round), True)
         "clear" -> {
           terminal_clear()
