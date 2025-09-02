@@ -65,3 +65,10 @@ pub fn load(filename: String) -> Result(Nums, Nums) {
     Error(_) -> Error([])
   }
 }
+
+pub fn forget(filename: String) -> Result(Nil, Nil) {
+  case simplifile.delete("src/" <> filename <> ".json") {
+    Ok(_) -> Ok(Nil)
+    Error(_) -> Error(Nil)
+  }
+}

@@ -124,6 +124,15 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
             }
           }
         }
+        "forget" -> {
+          case one_argument.forget(second) {
+            Ok(_) -> #(nums, True)
+            Error(_) -> {
+              io.println("file not found!")
+              #(nums, True)
+            }
+          }
+        }
 
         // failsafe
         _ -> #(nums, True)

@@ -5,6 +5,7 @@
 ## no argument commands:
 - `sort` - sorts the list.
 - `tors` - sorts the list reversed.
+- `empty` - empties the list.
 - `exit` - exists from the program.
 - `clear` - clears the terminal.
 - `round` - rounds all numbers.
@@ -15,6 +16,9 @@
 - `<action>` `<value>` - does this action with value to every number in list.
 - `add` `<value>` - appends a value to the end of the list.
 - `del` `<pos>` - deletes a number on that pos.
+- `save` `<filename>` - saves the list to a file.
+- `load` `<filename>` - loads the list from a file.
+- `forget` `<filename>` - deletes the file with filename.
 
 ## two argument commands:
 - `insert` `<pos>` `<value>` - inserts a new value at pos, pushing all other to the right.
