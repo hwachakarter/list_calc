@@ -82,6 +82,7 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
           terminal_clear()
           #(nums, True)
         }
+        "empty" -> #([], True)
         "exit" -> #(single_commands.do(nums, Exit), False)
 
         // triple actions
@@ -105,6 +106,24 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
         // word commands
         "add" -> #(one_argument.add(nums, inp_to_float(second)), True)
         "del" -> #(one_argument.del(nums, int.parse(second)), True)
+        "save" -> {
+          case one_argument.save(nums, second) {
+            Ok(nums) -> #(nums, True)
+            Error(nums) -> {
+              io.println("Something gone wrong!")
+              #(nums, True)
+            }
+          }
+        }
+        "load" -> {
+          case one_argument.load(second) {
+            Ok(nums) -> #(nums, True)
+            Error(_) -> {
+              io.println("File not found!")
+              #(nums, True)
+            }
+          }
+        }
 
         // failsafe
         _ -> #(nums, True)
