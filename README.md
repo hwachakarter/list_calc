@@ -9,6 +9,7 @@
 - `exit` - exists from the program.
 - `clear` - clears the terminal.
 - `round` - rounds all numbers.
+- `ls` - list all saved lists.
 - `<double action>` - grabs pairs in list and applies action to both of them.
 - `<triple action>` - applies action to all numbers in list at once and shows the result.
 

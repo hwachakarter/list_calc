@@ -3,6 +3,8 @@ import gleam/int
 import gleam/io
 import gleam/list
 import gleam/order
+import gleam/string
+import simplifile
 
 import scripts/types.{
   type Command, type Nums, Add, Div, Mul, Round, Sort, Sub, Tors,
@@ -44,5 +46,19 @@ pub fn all_at_once(nums: Nums, command: Command) -> Nums {
     Ok(num) -> io.println(num |> float.to_string)
     Error(_) -> io.println("failed!")
   }
+  nums
+}
+
+pub fn ls(nums: Nums) -> Nums {
+  let res = simplifile.read_directory("./src")
+  case res {
+    Ok(entries) ->
+      entries
+      |> list.filter(fn(name) { string.ends_with(name, ".json") })
+      |> string.join("\n")
+      |> io.println()
+    Error(err) -> io.println(simplifile.describe_error(err))
+  }
+  io.println("")
   nums
 }

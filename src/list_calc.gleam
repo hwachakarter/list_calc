@@ -84,6 +84,7 @@ fn get_command(nums: Nums) -> #(Nums, Bool) {
         }
         "empty" -> #([], True)
         "exit" -> #(single_commands.do(nums, Exit), False)
+        "ls" -> #(single_commands.ls(nums), True)
 
         // triple actions
         "+++" -> #(single_commands.all_at_once(nums, Add), True)
