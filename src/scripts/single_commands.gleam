@@ -55,6 +55,8 @@ pub fn ls(nums: Nums) -> Nums {
     Ok(entries) ->
       entries
       |> list.filter(fn(name) { string.ends_with(name, ".json") })
+      |> list.map(fn(name) { string.drop_end(name, 5) })
+      |> list.sort(string.compare)
       |> string.join("\n")
       |> io.println()
     Error(err) -> io.println(simplifile.describe_error(err))

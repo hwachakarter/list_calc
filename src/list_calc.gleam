@@ -6,7 +6,7 @@ import gleam/list
 import gleam/result
 import gleam/string
 
-// other inputs
+// other imports
 import argv
 import input
 import scripts/one_argument
